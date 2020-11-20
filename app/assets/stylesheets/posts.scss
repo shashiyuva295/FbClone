@@ -1,0 +1,33 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+/* Create three unequal columns that floats next to each other */
+.column {
+box-sizing: border-box;
+
+    float: left;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left, .right {
+box-sizing: border-box;
+
+  width: 15%;
+}
+
+.middle {
+box-sizing: border-box;
+
+  width: 69%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
