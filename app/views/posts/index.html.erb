@@ -19,9 +19,24 @@
         <%= form.label :text %>
         <%= form.rich_text_area :text %>
       </div>
+
+      <table>
+        <tr>
+          <th>Text</th>
+        </tr>
+        <% @posts.each do |p| %>
+          <tr>
+            <td><%= p.text %></td>
+          </tr>
+        <% end %>
+
+      </table>
     <% end %>
 
   </div>
+
+
+
 
 
 
