@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
+	before_action :authenticate_user!
+
 	def new
 		@post = Post.new
 	end
 	
 	def create
 		@post = Post.new(post_params)
+		@post.user_id = current_user.id
+		@posts = current_user.posts
 	 	if @post.save
 		 		redirect_to @post
 	 	else
@@ -15,6 +19,7 @@ class PostsController < ApplicationController
 	def index
 		@post = Post.new
 	 	@posts = Post.all
+
 	end
 		
 	def show

@@ -19,3 +19,4 @@ require("channels")
 require("trix")
 require("@rails/actiontext")
 import "@fortawesome/fontawesome-free/css/all.css";
+import "../packs/trix-editor-overrides"
