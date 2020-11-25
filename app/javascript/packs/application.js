@@ -15,8 +15,16 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
+//= require social-share-button
+//= require jquery_ujs
 require("trix")
 require("@rails/actiontext")
 import "@fortawesome/fontawesome-free/css/all.css";
 import "../packs/trix-editor-overrides"
+
+// if(typeof jQuery!=='undefined'){
+//     console.log('jQuery Loaded');
+// }
+// else{
+//     console.log('not loaded yet');
+// }

@@ -13,7 +13,7 @@ box-sizing: border-box;
     height: 300px; /* Should be removed. Only for demonstration */
 }
 
-.left, .right {
+.left{
 box-sizing: border-box;
 
   width: 15%;
@@ -27,9 +27,49 @@ box-sizing: border-box;
 
 }
 
+.right {
+box-sizing: border-box;
+
+  width: 19%;
+
+}
+
+.middle {
+box-sizing: border-box;
+
+  width: 66%;
+
+
+}
+
 /* Clear floats after the columns */
 .row:after {
     content: "";
     display: table;
     clear: both;
+}
+
+.post-mid{
+	
+	border:2px solid #80808042;
+	border-radius: 2px;
+	box-shadow: 4px 2px 4px 3px #80808042;
+	border-style: none;
+}
+
+table.a {
+	width:48px;
+}
+
+.logo{
+  
+  border-radius: 50%;
+     height: 30px;
+     width: 27px;
+     margin-left: 20px;
+  
+}
+
+.row1{
+  text-color: red;
 }

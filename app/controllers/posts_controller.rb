@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 	def index
 		@post = Post.new
 	 	@posts = Post.all
-
+	 	#@notifications = @target.notifications
 	end
 		
 	def show

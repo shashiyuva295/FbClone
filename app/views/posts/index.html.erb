@@ -1,62 +1,87 @@
-<div class="row">
-  <div class="column left" style="background-color:#ffe1e1;">
-    <h2>menu</h2>
-    <p>Some options</p>
+<div class="column left" style="background-color:#ffefef73;">
+  <h2>menu</h2>
+  <p>Some options</p>
+  <a href=""> Notification <i class="fa fa-bell" aria-hidden="true"></i>  <%= render_notifications(@notifications) %> </a>
 
-    <a href=""> Notification <i class="fa fa-bell" aria-hidden="true"></i> </a>
 
-  </div>
-  <div class="column middle" style="background-color:#fff;">
-    
+</div>
+
+
+
+
+
+
+<div class="column middle" style="background-color:#fff;">
+  <div class="text-editor-col">
     <%= render 'posts/form' %>
-
-    <div class="mid" >
-      <p class="mid two">  
-        <% @posts.each do |post| %>
-        <strong> <%= @post.user %> </strong>
-          <strong> <%= post.text %><br> </strong> 
-          <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
-
-          <% if current_user == post.user %>
-            <%= link_to 'Show', post_path(post) %>
-            <%= link_to 'Edit', edit_post_path(post) %>
-            <%= link_to 'Destroy', post_path(post),method: :delete,data: { confirm: 'Are you sure?' } %>
-          <% else %>
-            <%= link_to 'Show', post_path(post) %>
-          <% end %>
-      </p>
-      <% end %>
-
-      </div>
   </div>
 
+  <div class="post" >
+    <% @posts.each do |post| %>
+    <div class="post-mid" >
+      <a href="/users/edit"> <i class="fa fa-user-circle" aria-hidden="true"></i> <%= post.user.user_name %> </a>
+      <strong> <%= post.text %><br> </strong> 
+      <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
+
+      <% if current_user == post.user %>
+
+      <!-- <a href="/posts/:post_id/comments"> <i class="fa fa-comment" aria-hidden="true"></i> Comments </a> -->
+
+      <%= link_to 'Show', post_path(post) %>
+
+      <!-- <a href="/posts/:post_id/edit"> <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit </a> -->
+
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post_path(post),method: :delete,data: { confirm: 'Are you sure?' } %>
+      <%= social_share_button_tag(@post.text) %>
+        
+      <% else %>
+      <%= link_to 'Show', post_path(post) %>
+      <%= social_share_button_tag("") %>
+
+      <% end %>
+    </div>
+    <% end %>
+
+  </div>
+</div>
 
 
 
+<div class="column right" style="background-color:#ffefef73;">
+  
+  <% if user_signed_in? %>
+  
+  <p> User_id: <%= current_user.id %> </p>  
+  
+  <a href="/users/edit"> <i class="fa fa-user-circle" aria-hidden="true"></i> <%= current_user.user_name %> </a>
 
 
-  <div class="column right" style="background-color:#ffe1e1;">
+  <a href="#"><%=  link_to 'logout',destroy_user_session_path,method: :delete %></a><br>
 
-
-    <% if user_signed_in? %>
-
-    <p> User_id: <%= current_user.id %> </p>  
-
-    <a href="/users/edit"> <i class="fa fa-user-circle" aria-hidden="true"></i> <%= current_user.user_name %> </a>
-
-    <p><%= @posts.count %> <%= (@posts.count) == 1 ? 'Post' : 'Posts'%></p>
-
-    <a href="#"><%=  link_to 'logout',destroy_user_session_path,method: :delete %></a><br>
+  <table class="a" width="200">
+    <thead>
+      <tr style="color: red" >
+        <th scope="col"  > <%= @posts.count %> </th>
+        <th scope="col"  > 0 </th>
+        <th scope="col"  > 0 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row2" >
+        <td><%= (@posts.count) == 1 ? 'Post' : 'Posts'%></td>
+        <td> Followers </td>
+        <td> Following </td>
+      </tr>
+    </tbody>
+  </table>
 
     
-    <% else %>
+  <% else %>
       
-    <a href="/users/sign_in"> <i class="fa fa-sign-in" aria-hidden="true"></i> <%=  link_to 'login', user_session_path %></a><br>
+  <a href="/users/sign_in"> <i class="fa fa-sign-in" aria-hidden="true"></i> <%=  link_to 'login', user_session_path %></a><br>
       
-    <a href="#"><%= link_to 'signup', new_user_registration_path %></a><br>
+  <a href="#"><%= link_to 'signup', new_user_registration_path %></a><br>
 
-
-
-    <% end %>
-  </div>
+  <% end %>
 </div>

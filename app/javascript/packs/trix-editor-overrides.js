@@ -6,4 +6,3 @@ window.addEventListener("trix-file-accept", function(event) {
   }
 })
 
-console.log("hello form trix editor")
