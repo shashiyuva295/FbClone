@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_103901) do
+ActiveRecord::Schema.define(version: 2020_11_26_050233) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 2020_11_25_103901) do
     t.integer "user_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "follower_id"
+    t.string "followee_id"
   end
 
   create_table "likes", force: :cascade do |t|

@@ -1,0 +1,102 @@
+<h4> <%= "#{@user.user_name}'s profile "  %> </h4>
+<p> <%= "#{current_user.user_name} is viewing #{@user.user_name}'s" %> </p>
+<div>
+  <% if @current_user == @user %>   
+  <h5><%= "#{current_user.user_name}'s page" %></h5>
+  
+  <% elsif current_user.followees.include?(@user) %>   
+  
+    <h5><%= button_to "UnFollow #{@user.user_name}",     
+         unfollow_user_path, method: "POST" %></h5>
+
+         
+    
+    <% else %>   
+
+    <h5><%= button_to "Follow #{@user.user_name}", follow_user_path, 
+         method: "POST"  %></h5>
+
+  <% end %>
+
+  <% if current_user == @user %>
+  	<a class="btn btn-primary" href="/users/edit" role="button">Edit Profile</a>
+  <% end %>
+
+</div>
+
+
+
+<table class="a" width="200">
+  <thead>
+    <tr style="color: red" >
+      <th> <%= @user.posts.count %> </th>
+      <th> <%= current_user.followers.count %> </th>
+      <th> <%= current_user.followees.count %> </th>
+      <th> <%= @user.likes.count %> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row2" >
+      <td><%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%></td>
+      <td> Followers </td>
+      <td> Following </td>
+      <td> Like</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="usr-row">
+  
+
+  <div class="usr-column">
+    <h2>Profile options</h2>
+    <p>Some text..</p>
+
+    <div class="usr-bio" >
+    	
+    	<p>About</p>
+    	<p>text editor</p>
+    	<p> Date of join</p>
+    	<p> <%= "Member since: #{@user.created_at}"  %> </p>
+
+    </div>
+
+  </div>
+  
+
+
+
+
+  <div class="usr-column">
+    <p> user posts..</p>
+
+    <div class="post" >
+      <% @user.posts.each do |post| %>
+      <div class="post-mid" >
+        <a href="#"> <i class="fa fa-user-circle" aria-hidden="true"></i>
+        <% p = post.user_id %> 
+        <%= link_to post.user.user_name, user_path(p) %>  </a>
+
+        <strong> <%= post.text %><br> </strong> 
+        <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
+
+        <% if current_user == post.user %>
+
+        <%= link_to 'Show', post_path(post) %>
+
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post_path(post),method: :delete,data: { confirm: 'Are you sure?' } %>
+          
+        <% else %>
+        <%= link_to 'Show', post_path(post) %>
+
+        <% end %>
+      </div>
+      <% end %>
+
+    </div>
+
+  </div>
+
+
+</div>

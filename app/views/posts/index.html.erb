@@ -1,3 +1,21 @@
+<div>
+  <% if @current_user == @user %>   
+
+  <h5><%= "#{current_user.user_name}'s page" %></h5>
+  
+  <% elsif current_user.followees.include?(@user) %>   
+  
+    <h5><%= button_to "UnFollow #{@user.user_name}",     
+         unfollow_user_path, method: "POST" %></h5>
+    
+    <% else %>   
+
+    <h5><%= button_to "Follow #{@user.user_name}", follow_user_path, 
+         method: "POST"  %></h5>
+  <% end %>
+
+</div>
+
 <div class="column left" style="background-color:#ffefef73;">
   <h2>menu</h2>
   <p>Some options</p>
@@ -18,18 +36,18 @@
 
   <div class="post" >
     <% @posts.each do |post| %>
+
     <div class="post-mid" >
-      <a href="/users/edit"> <i class="fa fa-user-circle" aria-hidden="true"></i> <%= post.user.user_name %> </a>
+      <a href="#"> <i class="fa fa-user-circle" aria-hidden="true"></i>
+
+      <% p = post.user_id %> 
+      <%= link_to post.user.user_name, user_path(p) %>  </a>
       <strong> <%= post.text %><br> </strong> 
       <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
 
       <% if current_user == post.user %>
 
-      <!-- <a href="/posts/:post_id/comments"> <i class="fa fa-comment" aria-hidden="true"></i> Comments </a> -->
-
       <%= link_to 'Show', post_path(post) %>
-
-      <!-- <a href="/posts/:post_id/edit"> <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit </a> -->
 
       <%= link_to 'Edit', edit_post_path(post) %>
       <%= link_to 'Destroy', post_path(post),method: :delete,data: { confirm: 'Are you sure?' } %>
@@ -52,9 +70,12 @@
   
   <% if user_signed_in? %>
   
-  <p> User_id: <%= current_user.id %> </p>  
-  
-  <a href="/users/edit"> <i class="fa fa-user-circle" aria-hidden="true"></i> <%= current_user.user_name %> </a>
+  <p> User_id: <%= current_user.id %> </p>
+
+  <a href=""> <i class="fa fa-user-circle" aria-hidden="true"></i>  
+    <% q = current_user.id %> 
+    <%= link_to current_user.user_name, user_path(q) %>
+  </a><br>
 
 
   <a href="#"><%=  link_to 'logout',destroy_user_session_path,method: :delete %></a><br>
@@ -62,9 +83,9 @@
   <table class="a" width="200">
     <thead>
       <tr style="color: red" >
-        <th scope="col"  > <%= @posts.count %> </th>
-        <th scope="col"  > 0 </th>
-        <th scope="col"  > 0 </th>
+        <th scope="col"  > <%= current_user.posts.count %> </th>
+        <th scope="col"  > <%= current_user.followers.count %> </th>
+        <th scope="col"  > <%= current_user.followees.count %> </th>
       </tr>
     </thead>
     <tbody>
@@ -84,4 +105,7 @@
   <a href="#"><%= link_to 'signup', new_user_registration_path %></a><br>
 
   <% end %>
+
+  
+
 </div>

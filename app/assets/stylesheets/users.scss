@@ -1,0 +1,25 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+
+/* Create two equal columns that floats next to each other */
+.usr-column {
+box-sizing: border-box;
+
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.usr-row:after {
+box-sizing: border-box;
+
+  content: "";
+  display: table;
+  clear: both;
+}

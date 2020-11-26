@@ -3,6 +3,8 @@
   <%= @post.text %>
 </div>
 
+
+
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
 <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
@@ -14,6 +16,7 @@
 <% end %>
 
 <h2>Comments</h2>
+
 <% @post.comments.each do |comment| %>
 
   <p>
