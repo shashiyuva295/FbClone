@@ -1,7 +1,7 @@
 <div>
   <% if @current_user == @user %>   
 
-  <h5><%= "#{current_user.user_name}'s page" %></h5>
+  <h5><%= "Welcome #{current_user.user_name} !" %></h5>
   
   <% elsif current_user.followees.include?(@user) %>   
   

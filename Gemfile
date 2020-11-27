@@ -9,6 +9,7 @@ gem 'social-share-button', github: "huacnlee/social-share-button"# Use sqlite3 a
 gem 'sqlite3', '~> 1.4'
 gem 'activity_notification'
 gem 'dynamoid', '3.1.0'
+gem 'acts_as_votable'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

@@ -1,0 +1,67 @@
+show for  dynamic like and dislike -->
+(show.html.erb)
+<span class="parent-likes" >
+  <span class="like_count" <%= @post.id %> >
+    <%= @post.get_likes.size %> &#128591   
+  </span>
+
+  <a>
+    <% if current_user.liked? @post %>
+    <div> <%= link_to like_post_path(@post, 'unlike'), class: "preached-btn", method: :put, remote: true do %> Unlike </div>
+    <% end %>
+    
+    <% else %>
+    
+    <div> <%= link_to like_post_path(@post, 'like'), class: "preach-btn", method: :put, remote: true do %> Like </div>
+    <% end %>
+    <% end %>
+  </a>
+</span>
+
+(posts controller) -->
+
+def like
+
+    @post = Post.find(params[:id])
+
+    if params[:format] == 'like'
+      @post.liked_by current_user
+
+    elsif params[:format] == 'unlike'
+      @post.unliked_by current_user
+    end
+   
+    #respond_to do |format|
+    #   format.html
+    #    format.js { redirect_to show.js.erb }
+  #end
+end
+
+# def dislike
+#     @post = Post.find(params[:id])
+#     @post.disliked_by current_user
+#     redirect_to @post
+# end
+
+config.rb -->
+resources :posts do
+  member do     
+    put "like" => "posts#like"
+  end
+end
+
+like.js.erb
+
+$('.preached-btn').on('ajax:success', function(){
+  $(this).parent().parent().find('.like_count')
+  .html('<% @post.get_likes.size %> &#128591');
+  $(this).closest('.preached-btn').html('Preach');
+});
+
+$('.preach-btn').on('ajax:success', function(){
+  $(this).parent().parent().find('.like_count')
+  .html('<% @post.get_likes.size %> &#128591');
+  $(this).closest('.preach-btn').html('Preached');
+});
+
+console.log("show .js .erb")

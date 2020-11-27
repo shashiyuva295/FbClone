@@ -15,5 +15,5 @@ class User < ApplicationRecord
   has_many :likes, through: :posts
   has_many :comments, through: :posts
   
-  #acts_as_target
+  acts_as_voter
 end

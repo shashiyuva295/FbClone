@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   		resources :likes
   	end
 
-
   	resources :users, only: [:show] do
   		member do
   			get :following, :followers
@@ -15,4 +14,9 @@ Rails.application.routes.draw do
   		end
   	end
 
+    resources :posts do
+      member do     
+        put "like" => "posts#like"
+      end
+    end
 end

@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	before_action :authenticate_user!
+	respond_to :js, :html, :json
 
 	def new
 		@post = Post.new
@@ -19,7 +20,6 @@ class PostsController < ApplicationController
 	def index
 		@post = Post.new
 	 	@posts = Post.all
-	 	#@notifications = @target.notifications
 	end
 		
 	def show
@@ -38,6 +38,22 @@ class PostsController < ApplicationController
 	 	else
 	 	    render 'edit'
 	 	end
+	end
+
+	def like
+
+		@post = Post.find(params[:id])
+
+		if params[:format] == 'like'
+			@post.liked_by current_user
+		elsif params[:format] == 'unlike'
+	      	@post.unliked_by current_user
+	    end
+
+	    respond_to do |format|
+	    	format.html
+	    	format.js { like }
+	    end
 	end
 		
 	def destroy

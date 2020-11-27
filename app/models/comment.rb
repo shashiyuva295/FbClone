@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :user
 
-   
+  has_rich_text :body
   # targets: ->(comment, key) {
   #       ([comment.post.user] + comment.post.users.to_a - [comment.user]).uniq
   #     },
