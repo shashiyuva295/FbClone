@@ -35,4 +35,5 @@ class UsersController < ApplicationController
 	        @user.id).destroy
 	    redirect_to user_path(@user)
 	  end
+
 end

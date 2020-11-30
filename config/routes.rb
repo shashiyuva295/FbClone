@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   get 'welcome/index'
   root to: 'welcome#index'
   	resources :posts do
@@ -15,7 +16,8 @@ Rails.application.routes.draw do
   	end
 
     resources :posts do
-      member do     
+      member do
+        #get 'suggestion', to: 'posts#suggestion'     
         put "like" => "posts#like"
       end
     end

@@ -44,15 +44,15 @@ class PostsController < ApplicationController
 
 		@post = Post.find(params[:id])
 
-		if params[:format] == 'like'
+		if params[:value] == 'like'
 			@post.liked_by current_user
-		elsif params[:format] == 'unlike'
+		elsif params[:value] == 'unlike'
 	      	@post.unliked_by current_user
 	    end
 
 	    respond_to do |format|
-	    	format.html
-	    	format.js { like }
+	    	format.html #{render 'posts/show.html.erb'}
+	    	format.js { render 'posts/show.js.erb'}
 	    end
 	end
 		
@@ -61,6 +61,12 @@ class PostsController < ApplicationController
 	 	@post.destroy
 		redirect_to posts_path
 	end
+
+	# def suggestion
+	# 	#@users = Users.all
+	# end
+
+	
 
 	private
 		def post_params

@@ -21,6 +21,8 @@
   <p>Some options</p>
   <a href=""> Notification <i class="fa fa-bell" aria-hidden="true"></i>  <%= render_notifications(@notifications) %> </a>
 
+  <a href=""> Suggestions <i class="fa fa-bell" aria-hidden="true"></i>  <%#= link_to 'Suggestions', suggestion_post_path %> </a>
+
 
 </div>
 
@@ -54,7 +56,9 @@
       <%= social_share_button_tag(@post.text) %>
         
       <% else %>
+
       <%= link_to 'Show', post_path(post) %>
+
       <%= social_share_button_tag("") %>
 
       <% end %>
@@ -63,6 +67,10 @@
 
   </div>
 </div>
+
+
+
+
 
 
 
