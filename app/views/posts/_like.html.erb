@@ -1,0 +1,22 @@
+<p> Dynamic like </p>
+<span class="parent-likes" >
+  
+
+  <div>
+
+    <% if current_user.liked? @post %>
+    
+      <div> 
+        <%= link_to like_post_path(@post, value: 'unlike'),  class: "unlike-btn", method: :put, remote: true do %>Unlike <span class="like_count" <%= @post.id %> >
+        <%= @post.get_likes.count %> &#128591 </span> </div>
+      <% end %>
+    
+    <% else %>
+    
+      <div> <%= link_to like_post_path(@post, value: 'like'), class: "like-btn", method: :put, remote: true do %>Like  <span class="like_count" <%= @post.id %> >
+      <%= @post.get_likes.count %> &#128591 </span> </div>
+      <% end %>
+    
+    <% end %>
+  </div>
+</span>

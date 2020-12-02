@@ -3,9 +3,7 @@
   <%= @post.text %>
 </div>
 
-
-
-<p><%#= @post.likes.count %> <%#= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+<p><%#= @post.likes.count %> <%#= (@post.likes.count) == 1 ? 'Like' : 'Likes'%> </p>
 
 <%# pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
 <%# if pre_like %>
@@ -16,33 +14,10 @@
 <%#end %>
 
 
+<div class="post_like" > 
+  <%= render 'posts/like' %>
 
-<p> Dynamic like </p>
-<span class="parent-likes" >
-  <span class="like_count" <%= @post.id %> >
-    <%= @post.get_likes.count %> &#128591   
-  </span>
-
-  <a>
-    <% if current_user.liked? @post %>
-    <div> <%= link_to like_post_path(@post, value: 'unlike'), class: "unlike-btn", method: :put, remote: true do %>Unlike </div>
-    <% end %>
-    
-    <% else %>
-    
-    <div> <%= link_to like_post_path(@post, value: 'like'), class: "like-btn", method: :put, remote: true do %>Like </div>
-    <% end %>
-    <% end %>
-  </a>
-</span>
-
-
-
-
-
-
-
-
+</div>
 
 <% @post.comments.each do |comment| %>
 

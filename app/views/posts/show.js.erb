@@ -1,12 +1,18 @@
+<% if current_user.liked? @post %>
+	$('.like-btn').removeClass('liked');
+<% else %>
+	$('.like-btn').addClass('like-btn');
+<% end %>
+$('.like_count').html("<%= @post.get_upvotes.size %>")
 
-$('.unlike-btn').on('ajax:success', function(){
-  $(this).parent().parent().find('.like_count')
-  .html('<% @post.get_likes.count %> &#128591');
-  $(this).closest('.unlike-btn').html('Like');
-});
+// $('.unlike-btn').on('ajax:success', function(){
+//   $(this).parent().parent().find('.like_count')
+//   .html('<% @post.get_likes.count %> &#128591');
+//   $(this).closest('.unlike-btn').html('Like');
+// });
 
-$('.like-btn').on('ajax:success', function(){
-  $(this).parent().parent().find('.like_count')
-  .html('<% @post.get_likes.count %> &#128591');
-  $(this).closest('.like-btn').html('Unlike');
-});
+// $('.like-btn').on('ajax:success', function(){
+//   $(this).parent().parent().find('.like_count')
+//   .html('<% @post.get_likes.count %> &#128591');
+//   $(this).closest('.like-btn').html('Unlike');
+// });

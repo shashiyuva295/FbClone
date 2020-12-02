@@ -6,8 +6,14 @@ gem 'devise'
 gem 'image_processing', '~> 1.12', '>= 1.12.1'# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'social-share-button', github: "huacnlee/social-share-button"# Use sqlite3 as the database for Active Record
+
 gem 'sqlite3', '~> 1.4'
-gem 'activity_notification'
+
+#gem 'pg', '~> 0.20'
+#gem 'rails_12factor', group: :production
+#gem 'dotenv-rails'
+
+
 gem 'dynamoid', '3.1.0'
 gem 'acts_as_votable'
 # Use Puma as the app server

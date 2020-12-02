@@ -16,4 +16,6 @@ class User < ApplicationRecord
   has_many :comments, through: :posts
   
   acts_as_voter
+
+  
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_071339) do
+ActiveRecord::Schema.define(version: 2020_12_02_054502) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -71,25 +71,15 @@ ActiveRecord::Schema.define(version: 2020_11_27_071339) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string "target_type", null: false
-    t.integer "target_id", null: false
-    t.string "notifiable_type", null: false
-    t.integer "notifiable_id", null: false
-    t.string "key", null: false
-    t.string "group_type"
-    t.integer "group_id"
-    t.integer "group_owner_id"
-    t.string "notifier_type"
-    t.integer "notifier_id"
-    t.text "parameters"
-    t.datetime "opened_at"
+    t.integer "user_id"
+    t.integer "post_id", null: false
+    t.integer "identifier"
+    t.string "notice_type"
+    t.boolean "read"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_owner_id"], name: "index_notifications_on_group_owner_id"
-    t.index ["group_type", "group_id"], name: "index_notifications_on_group_type_and_group_id"
-    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
-    t.index ["notifier_type", "notifier_id"], name: "index_notifications_on_notifier_type_and_notifier_id"
-    t.index ["target_type", "target_id"], name: "index_notifications_on_target_type_and_target_id"
+    t.index ["post_id"], name: "index_notifications_on_post_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -97,6 +87,12 @@ ActiveRecord::Schema.define(version: 2020_11_27_071339) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.index ["cached_votes_down"], name: "index_posts_on_cached_votes_down"
+    t.index ["cached_votes_total"], name: "index_posts_on_cached_votes_total"
+    t.index ["cached_votes_up"], name: "index_posts_on_cached_votes_up"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -151,4 +147,8 @@ ActiveRecord::Schema.define(version: 2020_11_27_071339) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "notifications", "posts"
+  add_foreign_key "notifications", "posts"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "notifications", "users"
 end

@@ -10,10 +10,16 @@ class PostsController < ApplicationController
 		@post = Post.new(post_params)
 		@post.user_id = current_user.id
 		@posts = current_user.posts
+	 	
 	 	if @post.save
-		 		redirect_to @post
+		 	redirect_to @post
 	 	else
 	 		render 'new'
+	 	end
+
+	 	respond_to do |format|
+	 		format.html
+	 		format.js { render 'posts/create.js.erb'}
 	 	end
 	end
 

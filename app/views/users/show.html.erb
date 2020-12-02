@@ -1,20 +1,19 @@
 <h4> <%= "#{@user.user_name}'s profile "  %> </h4>
 <p> <%= "#{current_user.user_name} is viewing #{@user.user_name}'s" %> </p>
+
 <div>
+  
   <% if @current_user == @user %>   
   <h5><%= "#{current_user.user_name}'s page" %></h5>
   
   <% elsif current_user.followees.include?(@user) %>   
   
-    <h5><%= button_to "UnFollow #{@user.user_name}",     
+  <h5><%= button_to "UnFollow #{@user.user_name}",     
          unfollow_user_path, method: "POST" %></h5>
 
-         
-    
-    <% else %>   
+  <% else %>   
 
-    <h5><%= button_to "Follow #{@user.user_name}", follow_user_path, 
-         method: "POST"  %></h5>
+  <h5><%= button_to "Follow #{@user.user_name}", follow_user_path, method: "POST"  %></h5>
 
   <% end %>
 
@@ -30,8 +29,8 @@
   <thead>
     <tr style="color: red" >
       <th> <%= @user.posts.count %> </th>
-      <th> <%= current_user.followers.count %> </th>
-      <th> <%= current_user.followees.count %> </th>
+      <th> <%= @user.followers.count %> </th>
+      <th> <%= @user.followees.count %> </th>
       <th> <%#= @user.likes.count %> </th>
     </tr>
   </thead>
