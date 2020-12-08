@@ -303,6 +303,9 @@ Devise.setup do |config|
   #   include Turbolinks::Controller
   # end
 
+  #config.authentication_keys = [ :login ]
+  #config.reset_password_keys = [ :login ]
+  #config.confirmation_keys = [ :login ]
   # ==> Configuration for :registerable
 
   # When set to false, does not sign a user in automatically after their password is

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :posts
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         #,authentication_keys: [:login]
 
 
   has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'
@@ -14,8 +15,26 @@ class User < ApplicationRecord
 
   has_many :likes, through: :posts
   has_many :comments, through: :posts
-  
+  has_many :votes, through: :posts
   acts_as_voter
 
+  # attr_writer :login
+
+  # def login
+  #   @login || self.username || self.email
+  # end
+
+  #attr_accessor :login
+
+  #validates :user_name, presence: true, length: {maximum: 255}, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9]*\z/, message: "may only contain letters and numbers." }
+
+  # def self.find_for_database_authentication(warden_conditions)
+  #   conditions = warden_conditions.dup
+  #   if login = conditions.delete(:login)
+  #     where(conditions).where(["user_name = :value OR lower(email) = lower(:value)", { :value => login }]).first
+  #   elsif conditions.has_key?(:user_name) || conditions.has_key?(:email)
+  #     where(conditions.to_h).first
+  #   end
+  # end
   
 end

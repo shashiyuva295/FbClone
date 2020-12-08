@@ -75,8 +75,7 @@
         <a href="#"> <i class="fa fa-user-circle" aria-hidden="true"></i>
         <% p = post.user_id %> 
         <%= link_to post.user.user_name, user_path(p) %>  </a>
-
-        <strong> <%= post.text %><br> </strong> 
+        <strong>  <%= post.text %><br> </strong> 
         <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
 
         <% if current_user == post.user %>

@@ -21,7 +21,7 @@
   <p>Some options</p>
   <a href=""> Notification <i class="fa fa-bell" aria-hidden="true"></i>  <%#= render  user_notification_path %> </a>
 
-  <a href=""> Suggestions <i class="fa fa-bell" aria-hidden="true"></i>  <%#= link_to 'Suggestions', suggestion_post_path %> </a>
+  <a href=""> Suggestions <i class="fa fa-bell" aria-hidden="true"></i>  <%#= link_to 'Suggestions',  %> </a>
 
 
 </div>
@@ -45,7 +45,7 @@
       <% p = post.user_id %> 
       <%= link_to post.user.user_name, user_path(p) %>  </a>
       <strong> <%= post.text %><br> </strong> 
-      <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
+      <%= post.cached_votes_total %> <%= (post.cached_votes_total) == 1 ? 'Like' : 'Likes'%>
 
       <% if current_user == post.user %>
 

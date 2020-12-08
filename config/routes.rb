@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  get 'charges/new'
+  get 'charges/create'
+  get 'notifications/index'
   devise_for :users
   #notify_to :users
   get 'welcome/index'
   root to: 'welcome#index'
+  #root to: 'notifications#index'
+  
   	resources :posts do
   		resources :comments
   		resources :likes
@@ -17,8 +22,18 @@ Rails.application.routes.draw do
 
     resources :posts do
       member do
-        #get 'suggestion', to: 'posts#suggestion'     
+             
         put "like" => "posts#like"
+        put "notifications" => "notifications#index"
       end
     end
+
+    resources :charges, only: [:new, :create]
+    #devise_for :users
+    #resources :posts
+    #root to: 'posts#index'
+
+    # resources :users do
+    #  put 'suggestion' => 'users#suggestion'
+    # end
 end

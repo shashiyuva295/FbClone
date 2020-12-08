@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	after_action { notify }
 	before_action :authenticate_user!
 	respond_to :js, :html, :json
 
@@ -68,9 +69,6 @@ class PostsController < ApplicationController
 		redirect_to posts_path
 	end
 
-	# def suggestion
-	# 	#@users = Users.all
-	# end
 
 	
 
@@ -78,6 +76,11 @@ class PostsController < ApplicationController
 		def post_params
 	    	params.require(:post).permit(:text)
 	   	end
+	   	
+	 	def notify
+	   		Notification.create(event: "New Notification")
+	   	end
+
 
 end
 
