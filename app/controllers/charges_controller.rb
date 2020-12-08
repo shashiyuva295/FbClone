@@ -7,13 +7,16 @@ class ChargesController < ApplicationController
 
   	  customer = Stripe::Customer.create(
   	    email: params[:stripeEmail],
-  	    source: params[:stripeToken]
+  	    #card: card_token,
+  	    #source: params[:stripeToken]
+  	    source: params[:tok_visa]
   	  )
 
   	  charge = Stripe::Charge.create(
   	    customer: customer.id,
   	    amount: @amount,
   	    description: 'Rails Stripe customer',
+  	    #card: card_token,
   	    currency: 'usd'
   	  )
   end

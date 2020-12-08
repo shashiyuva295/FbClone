@@ -11,7 +11,7 @@ gem 'sqlite3', '~> 1.4'
 gem 'sidekiq', '~> 6.1', '>= 6.1.2'
 gem 'redis-server', '~> 0.0.5'
 gem 'stripe'
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails'
 #gem 'pg', '~> 0.20'
 #gem 'rails_12factor', group: :production
 #gem 'dotenv-rails'
