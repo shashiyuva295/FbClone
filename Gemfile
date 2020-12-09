@@ -16,6 +16,9 @@ gem 'dotenv-rails'
 gem 'paypal-sdk-rest'
 
 
+gem 'omniauth-facebook'
+
+
 #gem 'pg', '~> 0.20'
 #gem 'rails_12factor', group: :production
 #gem 'dotenv-rails'
