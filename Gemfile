@@ -12,6 +12,10 @@ gem 'sidekiq', '~> 6.1', '>= 6.1.2'
 gem 'redis-server', '~> 0.0.5'
 gem 'stripe'
 gem 'dotenv-rails'
+# gem 'paypal-checkout-sdk'
+gem 'paypal-sdk-rest'
+
+
 #gem 'pg', '~> 0.20'
 #gem 'rails_12factor', group: :production
 #gem 'dotenv-rails'

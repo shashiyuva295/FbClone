@@ -50,7 +50,51 @@
 
     <%= yield %>
 
+    <script src="https://www.paypal.com/sdk/js?client-id=EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM"></script>
+
+    <script>
+        paypal.Buttons({
+          env: 'sandbox', // Valid values are sandbox and live.
+          createOrder: function(data, actions) {
+          // This function sets up the details of the transaction, including the amount and line item details.
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: '0.01' // This will be replaced, I promise
+              }
+            }]
+          });
+        },
+        onApprove: async (data) => {}
+      }).render('#paypal-button-container');
+      </script> 
     
+    <!-- <script>
+      paypal.Buttons({
+        env: 'sandbox', // Valid values are sandbox and live.
+        createOrder: async () => {
+            const response = await fetch('/create_order', {method: 'POST'});
+            const responseData = await response.json();
+            return responseData.token;
+        },
+        onApprove: async (data) => {
+            const response = await fetch('/capture_order', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({order_id: data.orderID})
+            });
+            const responseData = await response.json();
+            if (responseData.status === 'COMPLETED') {
+              alert('COMPLETED');
+              // REDIRECT TO SUCCESS PAGE
+            }
+        }
+      }).render('#paypal-button-container');
+
+
+    </script> -->
 
   </body>
 </html>

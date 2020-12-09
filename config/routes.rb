@@ -34,4 +34,11 @@ Rails.application.routes.draw do
     resources :suggestions, only: [:index]
     get 'suggestions/index'
 
+    
+    resources :orders
+    #get 'orders/create_order'
+    #get 'orders/capture_order'
+    post "create_order" => "orders#create_order"
+    post "capture_order" => "orders#capture_order"
+
 end
