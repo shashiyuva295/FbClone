@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   #notify_to :users
   get 'welcome/index'
-  root to: 'welcome#index'
+  #root to: 'welcome#index'
+  root to: 'posts#index'
   #root to: 'notifications#index'
   
   #post "omniauth_callbacks" => "/auth/omniauth_callbacks"
