@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, 
-  controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
-  
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   #notify_to :users
   get 'welcome/index'
   root to: 'welcome#index'
   #root to: 'notifications#index'
   
-  #post "omniauth_callbacks" => "/"
-  #post "users/auth/facebook/callback" => "/posts"
+  #post "omniauth_callbacks" => "/auth/omniauth_callbacks"
+  #post "/auth/facebook/callback" => "/accounts/auth/facebook/callback"
 
   	resources :posts do
   		resources :comments
@@ -45,5 +43,7 @@ Rails.application.routes.draw do
     #get 'orders/capture_order'
     post "create_order" => "orders#create_order"
     post "capture_order" => "orders#capture_order"
+
+    
 
 end
