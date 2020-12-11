@@ -55,8 +55,8 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-  ENV['GOOGLE_OAUTH_CLIENT_ID'] = 'asdf'
-  ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = 'asdf'
+  ENV['GOOGLE_OAUTH_CLIENT_ID'] = '567931126357-tngfl1i4r9r39tukcnhg7r6dg6t9s191.apps.googleusercontent.com'
+  ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = 'LVZQBcrhWqVTXgEWnvoeJ9g5'
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true

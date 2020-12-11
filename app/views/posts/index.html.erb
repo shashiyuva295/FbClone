@@ -57,13 +57,21 @@
 
       <%= link_to 'Edit', edit_post_path(post) %>
       <%= link_to 'Destroy', post_path(post),method: :delete,data: { confirm: 'Are you sure?' } %>
-      <%= social_share_button_tag(@post.text) %>
-        
+      <%#= social_share_button_tag(@post.text) %>
+
+      <a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a>
+
+      <a class="js-social-share twitter" href="https://twitter.com/intent/tweet?text=“<%= yield :text %>”&url=<%= yield :url %>&via=twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter  </a>
+
+      <i class="fa fa-twitter-square" aria-hidden="true">twi</i>
+      <i class="fa fa-address-book" aria-hidden="true"> hii</i>
+
+
       <% else %>
 
       <%= link_to 'Show', post_path(post) %>
 
-      <%= social_share_button_tag("") %>
+      <%#= social_share_button_tag("") %>
 
       <% end %>
     </div>

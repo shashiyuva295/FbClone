@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	after_action { notify }
+	#after_action { notify }
 	before_action :authenticate_user!
 	respond_to :js, :html, :json
 
