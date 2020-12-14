@@ -21,6 +21,12 @@ gem 'omniauth-google-oauth2'
 #gem 'rails_12factor', group: :production
 #gem 'dotenv-rails'
 
+gem 'shareable'
+
+
+
+
+
 
 gem 'dynamoid', '3.1.0'
 gem 'acts_as_votable'

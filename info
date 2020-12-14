@@ -65,3 +65,20 @@ $('.like-btn').on('ajax:success', function(){
 });
 
 console.log("show .js .erb")
+
+
+
+
+
+
+<!-- <a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%#= yield :url %>" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a> -->
+
+<!-- <a onclick="javascript:window.open('https://twitter.com/share?text=<%#= @post.text %> by @current_user - &amp;url=<%#= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">
+    Twitter
+</a> -->
+
+<!-- <a onclick="javascript:window.open('https://twitter.com/share?text=<%#= message %> by @current_user &amp;url=<%#= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">
+    Twitter
+</a> -->
+
+<!-- <a href="http://twitter.com/intent/tweet?text=<%#=yield :message%>" target="_blank">Tweet </a> -->

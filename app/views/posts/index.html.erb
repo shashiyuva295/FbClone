@@ -21,7 +21,7 @@
   <p>Some options</p>
   <a href="/notifications/index"> Notification <i class="fa fa-bell" aria-hidden="true"></i> </a>
 
-  <a href="/suggestions/index"> Suggestions <i class="fa fa-bell" aria-hidden="true"></i> </a>
+  <a href="/suggestions/index"> Suggestions</a>
 
   <a href="/charges/new"> Stripe </a> <br>
 
@@ -42,10 +42,8 @@
 
   <div class="post" >
     <% @posts.each do |post| %>
-
     <div class="post-mid" >
-      <a href="#"> <i class="fa fa-user-circle" aria-hidden="true"></i>
-
+      <a href=""> <i class="fa fa-user-circle" aria-hidden="true"></i>
       <% p = post.user_id %> 
       <%= link_to post.user.user_name, user_path(p) %>  </a>
       <strong> <%= post.text %><br> </strong> 
@@ -57,21 +55,11 @@
 
       <%= link_to 'Edit', edit_post_path(post) %>
       <%= link_to 'Destroy', post_path(post),method: :delete,data: { confirm: 'Are you sure?' } %>
-      <%#= social_share_button_tag(@post.text) %>
-
-      <a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i>Facebook</a>
-
-      <a class="js-social-share twitter" href="https://twitter.com/intent/tweet?text=“<%= yield :text %>”&url=<%= yield :url %>&via=twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter  </a>
-
-      <i class="fa fa-twitter-square" aria-hidden="true">twi</i>
-      <i class="fa fa-address-book" aria-hidden="true"> hii</i>
-
+      
 
       <% else %>
 
       <%= link_to 'Show', post_path(post) %>
-
-      <%#= social_share_button_tag("") %>
 
       <% end %>
     </div>

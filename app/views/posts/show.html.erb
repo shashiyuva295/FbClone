@@ -1,7 +1,9 @@
 <div>
   <strong>Post:</strong>
   <%= @post.text %>
+
 </div>
+
 
 <p><%#= @post.likes.count %> <%#= (@post.likes.count) == 1 ? 'Like' : 'Likes'%> </p>
 
@@ -13,11 +15,17 @@
 
 <%#end %>
 
+<div class="share-icons twitter">
+  <%= render "layouts/share/twitter"%>
+</div>
+
 
 <div class="post_like" > 
   <%= render 'posts/like' %>
-
 </div>
+
+
+
 
 <% @post.comments.each do |comment| %>
 

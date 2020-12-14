@@ -248,6 +248,9 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    shareable (1.1.4)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     sidekiq (6.1.2)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -319,6 +322,7 @@ DEPENDENCIES
   redis-server (~> 0.0.5)
   sass-rails (>= 6)
   selenium-webdriver
+  shareable
   sidekiq (~> 6.1, >= 6.1.2)
   social-share-button!
   spring
