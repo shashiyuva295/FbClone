@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  
   #notify_to :users
   get 'welcome/index'
   #root to: 'welcome#index'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   		member do
   			get :following, :followers
   			post :follow, :unfollow
+
   		end
   	end
 
@@ -45,6 +48,10 @@ Rails.application.routes.draw do
     post "create_order" => "orders#create_order"
     post "capture_order" => "orders#capture_order"
 
-    
-
+    resources :users do
+      collection do
+        post 'import'
+      end
+    end
+    # post 'import_users' => 'users#import_users', as: 'import_users'
 end

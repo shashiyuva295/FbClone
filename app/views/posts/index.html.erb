@@ -21,15 +21,13 @@
   <p>Some options</p>
   <a href="/notifications/index"> Notification <i class="fa fa-bell" aria-hidden="true"></i> </a>
 
-  <a href="/suggestions/index"> Suggestions</a>
+  <a href="/suggestions/index"> Suggestions</a> <br>
 
   <a href="/charges/new"> Stripe </a> <br>
 
   <%= link_to "Paypal", orders_path %>
 
-
 </div>
-
 
 
 
@@ -62,10 +60,42 @@
       <%= link_to 'Show', post_path(post) %>
 
       <% end %>
+
     </div>
     <% end %>
 
   </div>
+
+  <%= flash[:notice] %>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>DOB</th>
+      </tr>
+    </thead>
+
+    <% @users.each do |user| %>
+    <tr>
+      <td> <%= user.user_name %> </td>
+      <td> <%= user.email %> </td>
+      <th> <%= user.phone %> </th>
+      <th> <%= user.dob %> </th>
+    </tr>
+    <% end %>
+  </table>
+
+  <div>        
+    <h4> Import Users Using CSV! </h4>
+    <%= form_tag import_users_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV"  %>
+    <p>    </p>
+    <% end %>
+  </div>
+
 </div>
 
 

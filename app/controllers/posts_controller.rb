@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 	def index
 		@post = Post.new
 	 	@posts = Post.all
+	 	@users = User.all
 	end
 		
 	def show

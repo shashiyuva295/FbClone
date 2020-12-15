@@ -34,5 +34,12 @@ class UsersController < ApplicationController
 	    current_user.followed_users.find_by(followee_id: 
 	        @user.id).destroy
 	    redirect_to user_path(@user)
-	  end
+	end
+
+	def import
+
+		User.import(params[:file])
+		#after the import, redirect and let us know the method is working!
+		redirect_to root_url, notice: "Activity Data imported"
+	end
 end

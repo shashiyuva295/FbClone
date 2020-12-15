@@ -23,7 +23,10 @@ gem 'omniauth-google-oauth2'
 
 gem 'shareable'
 
-
+#Bulk users using csv
+# gem 'autoprefixer-rails', '~> 7.1.6'
+# gem 'simple_form'
+# gem 'mini_racer', platforms: :ruby
 
 
 

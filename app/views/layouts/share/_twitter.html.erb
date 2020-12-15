@@ -1,4 +1,4 @@
-<a href="http://twitter.com/intent/tweet?text=<%=@post.text.to_plain_text%>" >Tweeter</a>
-
+<a href="http://twitter.com/intent/tweet?text=<%=@post.text.to_plain_text%>">Tweet</a> 
 <a onclick="javascript:window.open('https://twitter.com/share?text=<%= @post.text.to_plain_text %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">
-    Tweeter </a>
+    Tweet</a> 
+<a href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank">Facebook</a> 

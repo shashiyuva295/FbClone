@@ -1,6 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  require 'csv'
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      User.create! row.to_hash
+    end
+  end
+
   has_many :posts
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -18,6 +26,8 @@ class User < ApplicationRecord
   has_many :comments, through: :posts
   has_many :votes, through: :posts
   acts_as_voter
+
+
 
   # attr_writer :login
 
@@ -52,6 +62,6 @@ class User < ApplicationRecord
     user.password = Devise.friendly_token[0,20]
     user.name = auth.info.name # assuming the user model has a name
     user.image = auth.info.image # assuming the user model has an image
-  end
+    end
   end  
 end
